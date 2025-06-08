@@ -1,10 +1,32 @@
 
 
+01，密码能够提供的 4 种能力
+        机密性
+        完整性
+        身份验证（真实性）
+        不可否认性（抗抵赖）
+
+02，扩散 diffusion 和 混淆 confusion -- 遗留
 
 
-1
+03，常见的对称加密算法
+        DES、2DES、3DES
+        AES
+        CCMP
+        IDEA
+        CAST
+        SAFER
+        Blowfish
+        Twofish
+        RC4
+        RC5
 
+04，DH Diffie-Hellman 密钥交换算法
+        使用 DH 算法不需要 PKI 就能进行秘密密钥的交换。
 
+        DH 算法没有严格意义的公钥和私钥。
+
+        DH 算法既不能加密数据，也不能做数字签名。
 
 
 

@@ -81,6 +81,10 @@
             ESP encapsulating security payload 封装安全载荷：提供机密性、数据源校验，完整性保护。适用于 NAT 环境下的完整性保护。
             IKE internet key exchange 密钥交换协议：提供验证的密钥材料以和 ISAKMP 一起使用
             ISAKMP internet security association and key management protocol 因特网安全连接和密钥交换协议：提供安全连接创建和密钥交换的框架。
+            SA security associatin 安全关联
+                    是IPSec的关键，记录IPSec连接的配置信息，例如算法、密钥、密钥生命期、源IP地址； SA是单向的，即如果A和B是 双工通信 ，A最少需要 2个SA 。 
+                    SA的检索通过SPI（安全参数索引，Security Parameter Index）实现，每个IPSec数据包头包含SPI以指示接收方使用正确的SA处理。 
+                    每个传输节点都要经过加密/解密过程
 
         2，IPSec 的两种工作模式
             传输模式：
