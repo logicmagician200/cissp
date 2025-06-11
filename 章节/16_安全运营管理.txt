@@ -1,0 +1,36 @@
+
+
+01，安全运营的基本原则
+        1，知所必须 need to knwo
+        2，最小特权 least privilege
+        3，职责分离：将一个关键的任务分成不同的部分，每个部分由不同的人来执行。
+        4，双人控制
+        5，岗位轮换 job rotations
+        6，强制修改 mandatory vacation
+        7，监控特权
+        8，管理信息生命周期
+        9，SLA service level agreement 服务水平协议
+        10，人员安全
+        11，可问责 accountability
+
+
+
+
+
+
+transitive trust 信任传递
+        两个不同的信任域，一个信任域的主体可以访问另外一个信任域的客体。
+
+
+
+
+SLA service level agreement 服务水平协议
+
+
+
+
+各种配置
+        安全配置资源
+        配置管理
+        变更管理
+        补丁和漏洞管理

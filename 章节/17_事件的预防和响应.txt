@@ -1,0 +1,192 @@
+
+
+
+01，incident 和 event
+        event：是一个可被观察、验证和记录在案的消极事件
+
+        incedent：是给公司及其安全状况造成负面影响的一系列事件
+
+
+02，处理安全事件的通用框架
+        建立事件响应能力  Creation of a response capability
+        事件处理和响应    Incident handling and response
+        恢复和回馈        Recovery and feedback
+
+
+03，安全事件管理
+        安全事件管理的目的是实现快速恢复
+
+        包含人、技术和流程：    
+                指导所有与事件有关的活动并指导安全人员到一个预定义和预授权的路径解决问题。
+
+                描述在事件中所包含各方的角色和职责中所采取的活动。
+
+        管理负面事件：
+                managing an adverse envent
+
+        限制一个事件的影响
+                limit the effect of an incident
+
+
+        
+
+
+04，安全事件管理的流程
+        1，检测：包括事件的检测、识别和通知等子阶段。
+
+        2，响应
+                CERT/CSIRT
+
+                管理层必须确定执法部分是否需要介入，是否需要搜集证据
+
+        3，遏制/抑制/缓解
+                遏制事件，降低事件影响：缓解的目的是阻止或减少事件的进一步损害，进而开始恢复和修复。
+
+                适当的遏制为事件响应团队争取时间，了解时间的根因，然后进行正确的调查和判断。
+
+                进行数字取证以保存法庭证据
+
+        4，分析和追踪
+
+
+        5，报告
+
+
+        6，恢复 recovery 阶段   
+                将系统恢复到一个已知的良好状态。
+
+        7，补救 remediation
+
+        8，总结经验教训
+
+04，各种攻击
+        僵尸网络
+        SYN 洪泛攻击
+        Smurf 和 Fraggle 攻击
+        死亡之 ping（ping of death）
+        泪滴攻击（Teardrop）
+        零日攻击
+        恶意代码
+        中间人攻击（MITM）
+        蓄意破坏
+        间谍活动
+
+
+04，IDS intrusion detection system 入侵检测系统
+
+        1，IDS 按防护范围分类：
+                NIDS（基于网络的入侵检测系统）：实时检测网络流量，部署在分接器或交换机的调试端口或集线器上。
+
+                HIDS（基于主机的入侵检测系统）：实时监控主机审计日志，部署在每个关键主机上（分析日志）
+                        缺点：
+                            对主机操作系统的侵害性很大
+                            干扰正常系统处理，过度消耗 CPU 和内存。
+                
+                基于应用的 IDS：
+                        监控具体应用恶意行为的 IDS
+        
+        2，按防护原理分类
+                基于知识的 IDS：别名 基于特征的IDS、基于签名的 IDS、模式配置 IDS、、
+                    特征匹配，类似于方病毒软件
+                    特征必须持续更新
+
+                    只有先前确定的攻击签名被检测，不能发现新的攻击
+                    容易漏报
+
+                    基于规则的 IDS：
+                            在专家系统中使用基于规则的程序 IF/ELSE
+
+                            允许人工智能
+
+                            规则越复杂对硬件性能的要求越高
+                            不能检测新的攻击。
+
+                基于行为的 IDS：别名 基于异常的IDS、基于统计的IDS、启发式IDS
+                    基于行为的系统，需要学习环境中的“常规”活动
+                    能检测新的攻击
+
+                    缺点：可能检测出一个系统瞬间异常造成的非攻击事件
+
+                    分类：统计异常、检测异常、流量异常
+
+                    基于状态的IDS：
+                            基于状态的IDS属于基于行为的IDS的范畴。
+
+                            基于状态的 IDS 主要通过对网络或系统的各种状态信息进行检测，检测和分析异常行为，以识别出潜在的攻击者。
+        
+        3，IDS 基本组件
+                1，Sensor：传感器。部署检测机制，识别事件，产生适当提升。
+                2,Control and communication：控制和通信。处理告警信息，发生邮件或文本信息。
+                3,Enunciator：报警器。
+        
+        4，IDS 的错误警报门限（Clipping levels）
+                定义：应设置某种错误发生次数的门限，超过此门限后相关行为应该受到怀疑或禁止。
+
+
+                作用：设置错误门限值的目的是使用门限值、监控和审计的方式，及时发现问题防止更大损失发生。
+
+
+05，IPS intrusion prevention sysmte 入侵防御系统
+        区别与 IDS 的被动检测，IPS 具有主动防御能力
+
+
+06，SIEM 安全信息事件管理系统
+
+
+
+07，各种防御措施
+        1，SIEM 安全信息事件管理系统
+        2，Honeypots and Honeynets 蜜罐和蜜网
+        3，Pseudo Flaws 伪缺陷
+        4，paddel cells 填充单元：一个模拟环境，使用假数据来保持入侵者的兴趣
+        5，warning banners 警告标语
+        6，Anti-malware 反恶意软件：需要持续更新病毒库
+        7，邮件防护——白名单、黑名单、灰名单
+        8，sandboxing 沙盒
+                        让程序在隔离的环境中运行
+                        沙盒里的事情只在沙盒中发生--最小授权
+                        一项取代传统防病毒软件的技术——可以检测零日漏洞和隐藏的攻击
+
+        9，Third-party security services 第三方安全服务
+        10，渗透测试
+
+
+08，automatic incident response 自动事件响应
+        1，SOAR security orchestration automation and response 安全编排、自动化和响应
+
+        2，机器学习和人工智能 ML and AI
+
+        3，Threat intelligence 威胁情报
+
+        4，SOAR、ML、AI，和威胁馈送的交织
+
+09，SOAR security orchestration automation and response 安全编排、自动化和响应
+
+
+
+10，threat intelligence 威胁情报
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
