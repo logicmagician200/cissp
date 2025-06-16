@@ -222,7 +222,7 @@
             根据用户名和静态口令认证
     TACACS+：
             使用 TCP
-            支持动态密码
+            支持动态口令
             使用 AAA 体系结构，分离身份验证、授权和审计
             加密客户端和服务端之间的所有流量。
             通过令牌实现双因素认证。
@@ -232,3 +232,56 @@
             基础协议
             扩展应用协议，构建在基础协议之上，能够扩展多种服务，如 VoIP 等。
 
+20，相关协议的辨析集合
+        1，Kerberos
+                KDC Key Distribution Center 密钥分发中心
+                AS Authentication Service 身份认证服务
+                TGS Ticket Granting Service 票证授予服务
+                使用对称加密算法
+
+        2，SESAME Secure European System for Applications in a Multi-vendor Environment 
+                使用对称和非对称加密算法
+
+                PAS Privileged Attribute Server 特权属性服务器
+                        PAC 特权属性证书，具有数字签名。
+                        PAC 包括：主体的身份，对客体的访问能力，访问时间段以及 PAC 的生命周期。
+                        扮演类似 KDC 的角色
+                AS Authentication Server 身份认证服务
+
+        3，KryptoKnight
+                ticket-based
+
+                two-part authentication
+
+                不需要使用同步时钟，使用 Nonce（一次性随机数）
+        4，SAML
+                IDP Identity Provider 身份标识提供者
+
+        5，OAuth
+        6，OpenID
+        7，OIDC OpenID connect 
+
+        8，FIM  Federated identity management 联合身份管理
+
+        9，LDAP
+        10，DS
+        11，RADIUS remote authentication dial-in user service 远程拨入用认证服务
+                组合身份验证和授权
+                使用 UDP
+                仅仅加密 RAIDUS 客户端和 RADIUS 服务器之间传送的密码。
+                提供身份验证和授权。
+                认证服务器，动态口令
+                实现认证、授权、日志
+
+        12，TACACS termermal access controller access control system：
+                和 RADIUS 一样，包括集中式数据库，在服务端验证用户身份。
+                根据用户名和静态口令认证
+        13，TACACS+ 
+                使用 TCP
+                支持动态密码
+                使用 AAA 体系结构，分离认证、授权、审计
+                加密客户端和服务端之间的所有流量。
+
+        14，Diameter
+                基础协议
+                扩展应用协议，构建在基础协议之上，能够扩展多种服务，如 VoIP 等
