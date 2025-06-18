@@ -1,0 +1,24 @@
+
+PII
+PHI
+GDPR 中的敏感个人数据
+
+信息分级的意义在于可以给予合适的风险防范--遗留，有个类似的题目
+
+
+E-mail 进行传输时必须使用 PGP 或 S/MIME，或者将数据通过加密软件加密作为附件。
+
+data at rest
+data at transit
+data in use
+
+脆弱性
+
+
+
+
+
+
+
+
+
