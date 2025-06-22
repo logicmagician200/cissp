@@ -1,23 +1,5 @@
-
-访问控制技术 ------> 受限的用户接口：
-        1，
-        2，数据库视图
-        3，
-
 CIRT
 CSIRT
-
-event
-incedent
-capability
-threat
-metrics
-phsihing
-privacy
-attack
-entricement 
-tunnle 隧道
-
 
 PPT 域名
 

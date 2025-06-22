@@ -17,15 +17,54 @@
 
     TFTP udp 69
 
-    SNMP udp 161、udp162
+    SNMP simple network management protocol udp 161、udp162
+            udp161 udp162
+            v1、v2 是明文传输
+            v3 是加密传输
+
+            SNMP 由两部分组成 manager 和 agent。
+            MTB:management information base：管理信息库，有网络管理协议访问的管理对象数据库，它包括 SNMP 可以通过网络设备的 SNMP 管理代理进行设置的变量。
+
+            SNMP manager：通常是一个独立的设备，它用作网络管理者进行网络管理的用户接口。
+
+            SNMP agent：是一个网络设备，如主机、路由器等，这些设备必须能够接受管理基站发送的管理信息，他们的状态必须可以由 SNMP manager 进行监控。
 
     Telent tcp 23
 
-    SMTP tcp 25
+    SMTP tcp 25简单邮件传输协议
+        用于客户端，邮件发送协议
+        作为邮件服务器之间的消息转发协议
+        消息交换的寻址协议
+        与 POP3 和 IMAP 协同工作。
 
-    POP3
+        6，POP3 post office protocol 邮件服务器协议，支持转入和传出消息
+        POP3 允许工作站动态访问服务器上的邮件。
+        POP3 允许工作站检索邮件服务器上的邮件。
+        POP3 传输的是数据消息，这些消息可以是指令，也可以是应答。
+
+        POP3 协议支持“离线”邮件处理
+
+    IMAP internet message access protocol 因特网消息访问协议
+        1，和 POP3 类似，提供面向用户的邮件收取服务器
+        2，常用版本是 IMAP4
+        3，IMAP 可以只浏览邮件的头部信息就确认是否收取邮件。
+
+    DHCP dynamic host configuration protocol 动态主机配置协议
+            UDP 67：服务端端口，用于接受客户端的 iP 配置请求
+            UDP 68：客户端端口，用于接受服务端下发的配置
+
+            DHCP 协议有两个功能：
+                1，自动分配 IP 地址给用户
+                2，内网管理员作为对所有计算机进行中央管理的手段。
+    DNS 将域名解析为 IP 地址
+        通常使用UDP 53
+    
+    DNSSEC
+        在 DNS 服务器之间进行区间传输时可以保证完整性
 
     IMAP
+
+表示层：数据的转换，加解密，加解压，数据格式等
 
 会话层：
     RPC
@@ -53,15 +92,24 @@
     UDP
     TLS
 
-网络层：
+网络层：寻址，最佳线路，最佳路由
+    网络层协议必须确保数据包能够走最佳路线。
+    路由协议在网络层构建和维护他们的路由表。
+
+
     IPSec
         能够同时处理多个连接
         提供安全的身份验证和加密
         工作在网络层
         提供隧道模式和传输模式
-
+            传输模式：
+                只有传输层数据被计算 AH 或 ESP 头，AH 或 ESP 头以及 ESP 加密的用户数据被放置在原 IP 包头后面。
+                通常，传输模式应用在两台主机之间进行通信。或一台主机和一个安全网关之间的通信。
+            隧道模式：
+                整改 IP 数据包被用来计算 AH 或 ESP 头，AH 或 ESP 头以及 ESP 加密的用户数据被放置在一个新的 IP 包中。
+                通常隧道模式用在两个安全网关之间。
         AH authentication header
-                提供完整性。
+                提供完整性、数据源校验，抗重放攻击
                 抗重放（AH 头部有序列号字段。）
 
         ESP encapsulating security paylaod 
@@ -69,25 +117,48 @@
 
         SA 安全关联
                 单向、完全关联、存储 vpn 参数
-
-        IKE internet key exchange 
+                是IPSec的关键，记录IPSec连接的配置信息，例如算法、密钥、密钥生命期、源IP地址； SA是单向的，即如果A和B是 双工通信 ，A最少需要 2个SA 。 
+                SA的检索通过SPI（安全参数索引，Security Parameter Index）实现，每个IPSec数据包头包含SPI以指示接收方使用正确的SA处理。 
+                每个传输节点都要经过加密/解密过程
+        IKE internet key exchange：提供验证的密钥材料以和 ISAKMP 一起使用
                 密钥交换协议
 
         ISAKMP 安全连接及密钥交换协议
 
 
-    IP
+    IP 特别说明，TCP、UDP、ICMP、IGMP 等协议都是通过 IP 数据包传输的。
+
     ICMP internet control message protocol
+        使用 IP 数据包进行运行消息控制传递。可以实现宣布网络错误、宣布网络拥塞、宣布故障排除、宣布超时。
+
     IGMP
 
-数据链路层：
+数据链路层：为物理链路提供可靠的数据传输，包括错误的检验和校正
     ARP 地址解析协议，完成 IP 地址到 MAC 地址的转换。
-    RARP 
+    RARP：有网络管理员在网关中配置的 RARP 表，以便局域网中的无盘工作站查询分配给自己的 IP 地址。
     PPP point-to-point protocol
-    SLIP
+            点到点协议，工作在数据链路层。
+            实现了双工。
 
-    the LLC
-    the MAC
+            PPP 的主要功能：
+                1，多协议包封装
+                2，Link Control Protocol(LCP):用于建立，配置和维护连接
+                3，network control protocols(NCPs):用于网络层协议的配置
+            PPP协议使用的认证机制：
+                PAP
+                CHAP
+                EAP
+
+    SLIP serial line internet protocol
+
+    数据链路层由两个子层构成。
+    两个子层：
+        the LLC：逻辑链路控制子层
+        the MAC：介质访问控制子层
+
+物理层：网卡和驱动器将 bit 转换层电子信号并控制物理层面的数据传输，包括光学、电路和机械要求。
+
+
 
 身份认证协议：
         PAP
@@ -97,6 +168,7 @@
                 传输哈希值进行验证
                 链路建立之初进行身份验证，链路建立之后会定期进行身份验证。
                 CHAP 通过增量改变表示和“challenge-value”的值【抗重放攻击】
+                基于 MD5
         
         EAP 可扩展身份验证协议
                 LEAP：轻量级 EPA，用来解决 TKIP 中的缺陷，不在推荐使用
@@ -133,12 +205,16 @@ VPN
         DHCP
         NAT
         DNS
+        NAT network address translation 网络地址转换协议
+            NAT 实现的 3 种类型
+                静态映射
+                动态映射
+                端口地址转换
 
 各种网络：
         LAN
         VLAN
         WAN
-        
 
 
 

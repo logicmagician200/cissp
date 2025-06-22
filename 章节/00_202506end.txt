@@ -494,7 +494,25 @@ CCTV 以检测为主
 真实用户监控 RUM
 合成交易监控
 
+灾难恢复的度量 
+    1，RTO recovery time object 恢复时间目标
+            在系统的不可用性严重影响到机构之前所允许消耗的最长时间。
 
+
+    2，RPO recovery point object 恢复点目标
+            数据必须被恢复以便进行处理的点。
+            也就是所允许的最大数据丢失量。
+
+    3，WRT work recovery time 工作复原时间
+            需要由业务来恢复 RPO 中丢失的数据，
+            业务确认验证时间。
+
+    4，MTD = RTO + WRT
+        MTD maximum tolerable downtime 
+
+        BIA 的核心任务是确定关键业务功能及其支持资源的最大允许中断时间。
+
+哈龙不是 FM200，哈龙破坏臭氧层。
 
 
 
@@ -516,3 +534,4 @@ PII
 PHI
 GDPR 中的敏感个人数据
 BAS
+Email 传输必须使用 PGP 或 S/MIME，或者将数据通过加密软件加密作为附件
