@@ -127,36 +127,38 @@
 
 
 12，无线网络
-    1，AP access point/wireless access point 
-        防 rogua AP：未经企业许可私自接入企业网络中的无线路由器（wifi AP）
+        1，AP access point/wireless access point 
+                需要防 rogua AP：未经企业许可私自接入企业网络中的无线路由器（wifi AP）
+        
+        2，SSID service set identifier 服务集标识 
+                SSID 通常被认为是无线网的名称
 
-    2，802.11 i：采用标准 AES 高级加密标准（WPA2）
+        3，802.11 i：采用标准 AES 高级加密标准（WPA2）
 
-    3，SSID  service set identifier 服务集标识
-        SSID 通常被认为是无线网的名称
+        4，802.1x：用户接入网络的验证标准，可以用于无线网，也可以用于有线网。
 
-    4，WPA Wireless Application Protocol（无线应用协议）        
-        WPA 是为移动设备量身打造的一种传输协议。它可以让手机等小型移动设备通过无线网络连接互联网以获取信息。
+        5，WEP 协议（Wired Equivalent Privacy）:
+                采用 RC4 加密（不安全），IV size 24，容易被破解
+        
+        6，WPA (wi-fi protected access)
+                TKIP(Temporal key Integrity Protocol)负责处理无线安全的加密部分，以解决 WEP 保护的网络中遇到的安全问题。
+                IV 128 bit，比 WEP 更安全。
 
-    5，WEP 协议 wired equivalent privacy
-        采用 RC4
-        IV size 24 bit，容易被破解
-    
-    6，WPA2 wi-fi protected access 2
-        CCMP 替代 TKIP
-        比 WPA 更安全
-    
-    7,802.1X
-        用户接入网络的验证标准。
+        7，WPA2 (wi-fi protected access 2)
+                使用 CCMP 代替 TKIP
+                比 WPA 更安全
 
-    8，对无线网络的攻击：
-        战争散步/战争驾驶
-        战争粉记
-        重放攻击
-        IV 初始向量
-        邪恶接入点
-        邪恶双胞胎（使用相同的 SSID，导致中间人攻击）
-        干扰
+        8，WPA3 (wi-fi protected access 3)
+
+
+        9，对无线网络的攻击：
+            战争散步/战争驾驶
+            战争粉记
+            重放攻击
+            IV 初始向量
+            邪恶接入点
+            邪恶双胞胎（使用相同的 SSID，导致中间人攻击）
+            干扰
     
 13，NAC 访问访问控制 -遗留
 

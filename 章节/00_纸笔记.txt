@@ -1,0 +1,113 @@
+
+访问控制技术 ------> 受限的用户接口：
+        1，
+        2，数据库视图
+        3，
+
+CIRT
+CSIRT
+
+event
+incedent
+capability
+threat
+metrics
+phsihing
+privacy
+attack
+entricement 
+tunnle 隧道
+
+
+PPT 域名
+
+访问控制模型
+
+应用层协议
+
+各层协议
+
+站点恢复
+
+DRP 测试种类
+
+端口范围问题：
+
+微分段/隔离 
+
+SCAP
+
+STRIDE
+
+RTO
+RPO
+WRT
+
+IDaaS
+    
+SDLC 系统开发生命周期
+
+EF 暴露因子
+ARO 一年内的发生次数
+SLE 单一损失期望
+ALE 年度损失期望
+
+SEL = AV * EF
+ALE = SLE * ARO
+
+DAD
+
+腐蚀
+
+指向、识别
+
+归档、备份
+
+控制措施
+
+UAT
+QAT
+
+授权运行
+授权使用
+
+NIST SP800-53
+NIST SP800-53A
+
+SCAP
+
+FISMA
+
+CC EAL
+
+TOD
+
+TOE
+
+CVSS 7.0 以上都是严重问题
+
+coverage
+
+CC 第三方审计
+SOC 
+
+SAMM ---> owasp
+
+开发安全
+
+TCB
+
+ATO 操作授权
+
+基于格子的访问控制
+
+PCI-DSS
+
+DRM
+
+MTD
+
+组织的安全目标
+执行控制是否有效
+
+E-mail 进行传输时必须使用 PGP 或 S/MIME，或者将数据通过加密软件加密作为附件。

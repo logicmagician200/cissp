@@ -1,0 +1,271 @@
+
+简介：
+        应用层、会话层、传输层、网络层、数据链路层协议。
+
+        VPN（PPTP、L2F、L2TP、IPSec、SSL/TLS、MPLS）
+
+        身份认证协议（PAP、CHAP、EAP 系列）
+
+
+
+
+
+
+
+应用层：
+    FTP 传输 tcp20、控制 tcp21
+
+    TFTP udp 69
+
+    SNMP udp 161、udp162
+
+    Telent tcp 23
+
+    SMTP tcp 25
+
+    POP3
+
+    IMAP
+
+会话层：
+    RPC
+    PAP password authentication protocol 密码身份认证协议
+                使用明文格式发生用户名和口令
+                PAP 认证过程非常简单，只有两次握手。
+                被认证方发起，可以进行暴力破解。
+                一旦认证成功，就不在进行检测。
+
+    PPTP 点对点隧道协议 point-to-point tunnle portocol
+                工作在会话层，为第二层服务。
+                点对点连接。
+                为客户/服务器连接而设计。
+                把 PPP 帧封装进行隧道传输。
+                使用 MPPE 加密
+    L2TP layer 2 tunnle protocol 二层隧道协议
+                由 L2F 和 PPTP 结合形成。
+                两台计算机之间点对点连接。
+                为了提高安全性可以和 IPSec 结合。
+
+                L2TP 不对隧道内传输的数据加密。
+
+传输层：
+    TCP
+    UDP
+    TLS
+
+网络层：
+    IPSec
+        能够同时处理多个连接
+        提供安全的身份验证和加密
+        工作在网络层
+        提供隧道模式和传输模式
+
+        AH authentication header
+                提供完整性。
+                抗重放（AH 头部有序列号字段。）
+
+        ESP encapsulating security paylaod 
+                提供机密性和完整性
+
+        SA 安全关联
+                单向、完全关联、存储 vpn 参数
+
+        IKE internet key exchange 
+                密钥交换协议
+
+        ISAKMP 安全连接及密钥交换协议
+
+
+    IP
+    ICMP internet control message protocol
+    IGMP
+
+数据链路层：
+    ARP 地址解析协议，完成 IP 地址到 MAC 地址的转换。
+    RARP 
+    PPP point-to-point protocol
+    SLIP
+
+    the LLC
+    the MAC
+
+身份认证协议：
+        PAP
+
+        CHAP 挑战握手身份认证协议
+                进行三次握手
+                传输哈希值进行验证
+                链路建立之初进行身份验证，链路建立之后会定期进行身份验证。
+                CHAP 通过增量改变表示和“challenge-value”的值【抗重放攻击】
+        
+        EAP 可扩展身份验证协议
+                LEAP：轻量级 EPA，用来解决 TKIP 中的缺陷，不在推荐使用
+
+                EAP-MD5：基于散列值进行弱身份验证。
+                        单向验证，服务端验证客户端。
+
+                EAP-TLS：双向证书验证，被认为是最安全的。
+                        PEAP 和 EAP-TTLS 只在服务端验证证书。
+
+                PEAP：使用了 TLS
+
+                EAP-TTLS：扩展了 EAP-TLS 功能。
+
+VPN     
+        PPTP：
+        
+        L2F： 在 L2TP 协议之前有 CISCO 创建。
+                L2F 和 PPTP 结合形成 L2TP
+                提供相互身份验证。
+                没有加密。
+
+        L2TP：
+        
+        IPSec：
+        
+        SSL/TLS：工作在传输层，提供应用层安全。优点为易于维护。
+        
+        
+        MPLS：
+
+
+其他协议：
+        DHCP
+        NAT
+        DNS
+
+各种网络：
+        LAN
+        VLAN
+        WAN
+        
+
+
+
+
+---------------------------> IAM 相关的协议、标准、实现 <----------------------------------------------------------------------------------------
+
+简介：
+        主要介绍了 SSO、FIM、AAA 服务
+
+SSO single sign-on 单点登录，SSO 的具体解决方案如下：
+        Kerberos 有 MIT 的雅典娜项目开发。
+        SESAME
+        KryptoKnight
+        SAML
+
+Kerberos 由 MIT 的雅典娜项目开发。
+    认证协议，使用非对称加密。
+    提供身份验证、机密性、完整性保护，不保证可用性。
+
+    提供端到端安全。
+    秘密密钥在 KDC 和委托人之间共享。
+
+    会话秘密：在两个委托人之间共享，会话结束之后会销毁。
+
+    KDC 密钥分发中心：
+        Authentication Service AS 身份认证服务
+        Ticket Granting Service TGS 票证授予服务
+
+    弱点：
+        KDC 存在单点故障
+        秘密密钥临时存储在用户工作站上。
+        容易受到口令猜测攻击，KDC 不知道是否受到字典攻击
+
+    身份认证，机密性，不提供授权
+    KDC 密钥分发中心 ---> kerberos 的核心
+
+SESAME
+    使用对称和非对称加密算法
+    SESAME 依赖 PAS
+
+    主要包括 PAS 和 AS
+
+    PAS privileged attribute service 特权属性服务器
+        特权属性正式（PAC），具有数字签名
+        PAC：主体身份，对客体的访问能力，访问时段，已经 PAC 的生命周期。
+
+        PAS 扮演类似 KDC 的角色。
+     AS authentication Service 身份验证服务器
+
+KryptoKnigth
+     ticket-based
+     two-part authentication
+
+     不需要同步时钟，使用 Nonce（一次性随机数）
+
+SAML 安全断言标记语言
+        SAML 依赖 IdP
+        基于 web 单点登录
+        联合身份管理的标准
+        安全域：在共享统一的安全策略和管理的领域之间建立信任关系。
+        IDP（身份提供方）
+        SA 安全断言
+
+FIM federated identity management 联合身份管理
+        联合身份管理是对用户身份及其凭证的管理。将一个系统的用户身份与多个身份管理系统联合起来。
+
+        FIM 可以是本地，也可以是云的，或者二者结合：本地联合、基于云的联合、混合联合
+
+        实现联合身份管理的方法有：SAML、OAuth、OpenID、OIDC
+
+        JIT jest-in-time provisioning 即时配置
+                自动创建两个实体之间的关系，以便新用户可以访问资源。
+
+OAuth：
+        一个开发标准，用于授权。
+
+        OAuth 2.0 使用访问令牌。
+
+OpenID：
+        OpenID 是由第三方进行用户身份验证的开放标准。
+
+        用户只需要预先在一个作为 OpenID 身份提供者（identity provider IdP）的网站上注册。
+
+OIDC：
+        OIDC = 身份认证 + 授权协议
+        
+        原始的 OpenID 事实上已经废弃，业内使用的 OIDC（OpenId connect）是结合了 OpenID 2.0 并允许在 OAuth 2.0 之上的身份层协议。
+
+        OIDC 是一种身份协议，有 OpenID 基金会开发。利用了 OAuth 2.0 的授权和身份验证机制。
+
+        虽然 OAuth 2.0 是一种授权协议，但是 OIDC 是一种身份验证协议，可用于向客户端服务验证用户的身份。
+
+
+AAA 服务
+    centralized access control administration 集中式访问控制管理
+
+    RADIUS：remote authentication dial-in user service 远程拨入用认证服务
+        组合身份验证和授权
+        使用 UDP
+        仅仅加密认证的口令。
+        提供身份验证和授权。
+        认证服务器，动态口令
+        实现认证、授权、日志
+
+    TACACS termermal access controller access control system：
+        使用 UDP
+        和 RADIUS 一样，包括集中式数据库，在服务端验证用户身份。
+        根据用户名和静态口令认证
+
+    TACACS+：
+        使用 TCP，支持动态密码。
+        使用 AAA 体系结构，分离认证、授权、审计。
+        加密客户端和服务端之间的所有流量。
+        双因素认证（允许使用动态密码）
+      
+
+    Diameter：
+        旨在替代 TACACS，且使用 TCP。
+
+        基础协议。
+        扩展应用协议，构建在基础协议之上，能够扩展多种服务，如 VoIP 等。
+          
+
+
+
+
+
+
+
+
